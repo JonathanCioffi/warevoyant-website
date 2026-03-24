@@ -3,145 +3,182 @@
 import { useState } from "react";
 import Image from "next/image";
 
+/*
+ * Instagram Reel Frames — Agency Creative Direction
+ * Arc: Tension → Recognition → Resolution → Aspiration → Action
+ * 7 frames, ~13s total
+ */
+
 const frames = [
+  // ── Frame 1: HOOK — Provoke ──────────────────────────────────────────
   {
     id: 1,
+    label: "Hook",
     bg: "bg-[#231F20]",
     content: (
-      <div className="flex flex-col items-center justify-center h-full px-12 text-center">
-        <Image src="/warevoyant-logo.png" alt="WareVoyant" width={400} height={80} className="mb-16" />
-        <p className="text-[52px] font-bold text-white leading-[1.15]">
-          Your AV workflow<br />is broken.
+      <div className="flex flex-col items-center justify-center h-full px-16">
+        {/* Lots of negative space — let the emptiness sell the message */}
+        <div className="flex-1" />
+        <p className="text-[28px] font-light text-[#EAEBF2]/40 tracking-wide text-center mb-6">
+          Your AV workflow
         </p>
+        <p className="text-[52px] font-bold text-white text-center leading-none">
+          is broken.
+        </p>
+        <div className="flex-1" />
+        {/* Subtle blinking cursor effect (static frame — Canva adds animation) */}
+        <div className="w-[2px] h-6 bg-white/60 mb-24" />
       </div>
     ),
   },
+
+  // ── Frame 2: PAIN — The empty room ───────────────────────────────────
   {
     id: 2,
+    label: "Pain",
     bg: "bg-black",
     content: (
       <div className="relative flex items-center justify-center h-full">
-        <Image src="/hero-room.jpg" alt="Conference room" fill className="object-cover opacity-40" />
-        <div className="relative z-10 px-12 text-center">
-          <p className="text-[44px] font-bold text-white leading-[1.2] mb-8">
+        {/* Dark, cold room — the problem visualized */}
+        <Image src="/hero-room.jpg" alt="" fill className="object-cover opacity-25" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/80" />
+        <div className="relative z-10 px-14 text-center">
+          <p className="text-[38px] text-white/90 leading-[1.3] mb-3" style={{ fontWeight: 300 }}>
             Disconnected tools.
           </p>
-          <p className="text-[44px] font-bold text-white leading-[1.2] mb-8">
+          <p className="text-[38px] text-white/70 leading-[1.3] mb-3" style={{ fontWeight: 300 }}>
             Manual reports.
           </p>
-          <p className="text-[44px] font-bold text-white leading-[1.2]">
+          <p className="text-[38px] text-white/50 leading-[1.3]" style={{ fontWeight: 300 }}>
             No visibility.
           </p>
         </div>
       </div>
     ),
   },
+
+  // ── Frame 3: THE TURN — Three lines, each its own beat ───────────────
   {
     id: 3,
+    label: "Turn",
     bg: "bg-[#231F20]",
     content: (
-      <div className="flex flex-col items-center justify-center h-full px-12 text-center">
-        <Image src="/warevoyant-logo.png" alt="WareVoyant" width={360} height={72} className="mb-20" />
-        <p className="text-[56px] font-bold text-white leading-[1.1]">
+      <div className="flex flex-col items-center justify-center h-full px-10 text-center gap-10">
+        <p className="text-[48px] font-bold text-white leading-none tracking-tight">
           Your Project.
         </p>
-        <p className="text-[56px] font-bold text-white leading-[1.1]">
+        <div className="w-12 h-[1px] bg-white/20" />
+        <p className="text-[48px] font-bold text-white leading-none tracking-tight">
           Your Process.
         </p>
-        <p className="text-[56px] font-bold leading-[1.1]">
+        <div className="w-12 h-[1px] bg-white/20" />
+        <p className="text-[48px] font-bold leading-none tracking-tight">
           <span className="text-[#58B947]">One </span>
           <span className="text-[#009DD2]">Platform.</span>
         </p>
       </div>
     ),
   },
+
+  // ── Frame 4: FEATURE — Lifecycle Management (Green) ──────────────────
   {
     id: 4,
+    label: "Lifecycle",
     bg: "bg-[#231F20]",
     content: (
-      <div className="flex flex-col items-center justify-center h-full px-12 text-center">
-        <div className="w-24 h-24 rounded-full bg-[#58B947]/20 flex items-center justify-center mb-10">
-          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#58B947" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M12 20h9" /><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
-          </svg>
+      <div className="flex h-full">
+        {/* Left accent strip */}
+        <div className="w-[6px] bg-[#58B947]" />
+        <div className="flex-1 flex flex-col justify-center px-12">
+          <p className="text-[14px] font-semibold tracking-[0.25em] uppercase text-[#58B947] mb-4">
+            Lifecycle Management
+          </p>
+          <p className="text-[40px] font-bold text-white leading-[1.15] mb-6">
+            Design through<br />decommission.
+          </p>
+          <div className="w-10 h-[1px] bg-white/15 mb-6" />
+          <p className="text-[18px] text-[#EAEBF2]/50 leading-[1.6]">
+            Phase gates. Task management.<br />Daily logs. Deficiency tracking.
+          </p>
         </div>
-        <p className="text-[20px] font-semibold tracking-[0.2em] uppercase text-[#58B947] mb-6">
-          Lifecycle Management
-        </p>
-        <div className="w-16 h-[2px] bg-[#58B947] mb-8" />
-        <p className="text-[36px] font-bold text-white leading-[1.2] mb-6">
-          Design through<br />decommission.
-        </p>
-        <p className="text-[22px] text-[#EAEBF2]/60 leading-[1.5] max-w-[380px]">
-          Phase gates, task management, daily logs, and deficiency tracking.
-        </p>
       </div>
     ),
   },
+
+  // ── Frame 5: FEATURE — Device Monitoring (Blue) ──────────────────────
   {
     id: 5,
+    label: "Monitoring",
     bg: "bg-[#231F20]",
     content: (
-      <div className="flex flex-col items-center justify-center h-full px-12 text-center">
-        <div className="w-24 h-24 rounded-full bg-[#009DD2]/20 flex items-center justify-center mb-10">
-          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#009DD2" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <rect x="2" y="3" width="20" height="14" rx="2" ry="2" /><line x1="8" y1="21" x2="16" y2="21" /><line x1="12" y1="17" x2="12" y2="21" />
-          </svg>
+      <div className="flex h-full">
+        <div className="w-[6px] bg-[#009DD2]" />
+        <div className="flex-1 flex flex-col justify-center px-12">
+          <p className="text-[14px] font-semibold tracking-[0.25em] uppercase text-[#009DD2] mb-4">
+            Device Monitoring
+          </p>
+          <p className="text-[40px] font-bold text-white leading-[1.15] mb-6">
+            Industry-leading<br />integrations.
+          </p>
+          <div className="w-10 h-[1px] bg-white/15 mb-6" />
+          <p className="text-[18px] text-[#EAEBF2]/50 leading-[1.6]">
+            Real-time alerts. Environmental<br />compliance. System health.
+          </p>
         </div>
-        <p className="text-[20px] font-semibold tracking-[0.2em] uppercase text-[#009DD2] mb-6">
-          Device Monitoring
-        </p>
-        <div className="w-16 h-[2px] bg-[#009DD2] mb-8" />
-        <p className="text-[36px] font-bold text-white leading-[1.2] mb-6">
-          Industry-leading<br />integrations.
-        </p>
-        <p className="text-[22px] text-[#EAEBF2]/60 leading-[1.5] max-w-[380px]">
-          Real-time alerts, environmental compliance, and system health at a glance.
-        </p>
       </div>
     ),
   },
+
+  // ── Frame 6: FEATURE — Service Desk (Orange) ─────────────────────────
   {
     id: 6,
+    label: "Service Desk",
     bg: "bg-[#231F20]",
     content: (
-      <div className="flex flex-col items-center justify-center h-full px-12 text-center">
-        <div className="w-24 h-24 rounded-full bg-[#F07B20]/20 flex items-center justify-center mb-10">
-          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#F07B20" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-          </svg>
+      <div className="flex h-full">
+        <div className="w-[6px] bg-[#F07B20]" />
+        <div className="flex-1 flex flex-col justify-center px-12">
+          <p className="text-[14px] font-semibold tracking-[0.25em] uppercase text-[#F07B20] mb-4">
+            Service Desk
+          </p>
+          <p className="text-[40px] font-bold text-white leading-[1.15] mb-6">
+            Built for<br />AV operations.
+          </p>
+          <div className="w-10 h-[1px] bg-white/15 mb-6" />
+          <p className="text-[18px] text-[#EAEBF2]/50 leading-[1.6]">
+            SLA tracking. Priority routing.<br />Resolution workflows.
+          </p>
         </div>
-        <p className="text-[20px] font-semibold tracking-[0.2em] uppercase text-[#F07B20] mb-6">
-          Service Desk
-        </p>
-        <div className="w-16 h-[2px] bg-[#F07B20] mb-8" />
-        <p className="text-[36px] font-bold text-white leading-[1.2] mb-6">
-          Built for<br />AV operations.
-        </p>
-        <p className="text-[22px] text-[#EAEBF2]/60 leading-[1.5] max-w-[380px]">
-          SLA tracking, priority routing, and resolution workflows that speak your language.
-        </p>
       </div>
     ),
   },
+
+  // ── Frame 7: CTA — Close strong ──────────────────────────────────────
   {
     id: 7,
+    label: "CTA",
     bg: "bg-black",
     content: (
       <div className="relative flex flex-col items-center justify-center h-full">
-        <Image src="/hero-room.jpg" alt="Conference room" fill className="object-cover opacity-30" />
+        {/* Room is alive now — warm, bright */}
+        <Image src="/hero-room.jpg" alt="" fill className="object-cover opacity-20" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/70" />
         <div className="relative z-10 flex flex-col items-center text-center px-12">
-          <Image src="/warevoyant-logo.png" alt="WareVoyant" width={320} height={64} className="mb-16" />
-          <p className="text-[40px] font-bold text-white leading-[1.2] mb-12">
+          <Image src="/warevoyant-logo.png" alt="WareVoyant" width={280} height={56} className="mb-20" />
+
+          <p className="text-[36px] font-bold text-white leading-[1.2] mb-14">
             Apply for<br />Early Access
           </p>
-          <div className="bg-[#58B947] rounded-2xl px-12 py-5 mb-10">
-            <p className="text-[24px] font-bold text-white">
+
+          <div className="bg-[#58B947] rounded-xl px-10 py-4 mb-14">
+            <p className="text-[20px] font-bold text-white tracking-wide">
               warevoyant.com/beta
             </p>
           </div>
-          <p className="text-[18px] text-[#EAEBF2]/50">
-            Your Project. Your Process. One Platform.
+
+          <p className="text-[28px] font-bold leading-none tracking-tight">
+            <span className="text-[#58B947]">One </span>
+            <span className="text-[#009DD2]">Platform.</span>
           </p>
         </div>
       </div>
@@ -153,50 +190,77 @@ export default function ReelFrames() {
   const [currentFrame, setCurrentFrame] = useState(0);
 
   return (
-    <div className="min-h-screen bg-[#111] flex flex-col items-center py-8 gap-8">
-      <h1 className="text-white text-2xl font-bold">Instagram Reel Frames — Screenshot Each</h1>
+    <div className="min-h-screen bg-[#0a0a0a] flex flex-col items-center py-10 gap-10">
+      <div className="text-center">
+        <h1 className="text-white text-xl font-semibold tracking-wide">WareVoyant — Instagram Reel</h1>
+        <p className="text-white/40 text-sm mt-1">7 frames · ~13 seconds · 1080×1920</p>
+      </div>
 
       {/* Frame selector */}
-      <div className="flex gap-2">
+      <div className="flex gap-1.5">
         {frames.map((f, i) => (
           <button
             key={f.id}
             onClick={() => setCurrentFrame(i)}
-            className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+            className={`px-3 py-1.5 rounded-md text-xs font-medium transition-all ${
               i === currentFrame
-                ? "bg-[#58B947] text-white"
-                : "bg-white/10 text-white/60 hover:bg-white/20"
+                ? "bg-white text-black"
+                : "bg-white/5 text-white/50 hover:bg-white/10 hover:text-white/70"
             }`}
           >
-            Frame {f.id}
+            {f.label}
           </button>
         ))}
       </div>
 
-      {/* Current frame at 1080x1920 (scaled to fit screen) */}
-      <div
-        className="relative overflow-hidden rounded-2xl border border-white/10"
-        style={{ width: 360, height: 640 }}
-      >
-        <div
-          className={`absolute inset-0 ${frames[currentFrame].bg}`}
-          style={{ width: 360, height: 640 }}
-        >
-          {frames[currentFrame].content}
+      {/* Preview frame (scaled to ~phone size) */}
+      <div className="flex gap-8 items-start">
+        {/* Phone preview */}
+        <div>
+          <div
+            className="relative overflow-hidden rounded-[2rem] border-2 border-white/10 shadow-2xl"
+            style={{ width: 320, height: 568 }}
+          >
+            <div
+              className={`absolute inset-0 ${frames[currentFrame].bg}`}
+              style={{ width: 320, height: 568 }}
+            >
+              <div style={{ transform: "scale(0.889)", transformOrigin: "top left", width: 360, height: 640 }}>
+                {frames[currentFrame].content}
+              </div>
+            </div>
+          </div>
+          <p className="text-center text-white/30 text-xs mt-3">Preview (320×568)</p>
+        </div>
+
+        {/* Frame info */}
+        <div className="pt-8 max-w-[200px]">
+          <p className="text-white/80 text-sm font-semibold">Frame {frames[currentFrame].id}</p>
+          <p className="text-white/40 text-xs mt-1 uppercase tracking-wider">{frames[currentFrame].label}</p>
+          <div className="w-8 h-[1px] bg-white/10 my-4" />
+          <p className="text-white/30 text-xs leading-relaxed">
+            {currentFrame === 0 && "Hook — provoke with negative space. Cursor blink in Canva."}
+            {currentFrame === 1 && "Pain — each line fades in. Room is dark, abandoned."}
+            {currentFrame === 2 && "The turn — three lines, each on its own beat with separators."}
+            {currentFrame === 3 && "Feature — green accent strip. Left-aligned, editorial."}
+            {currentFrame === 4 && "Feature — blue accent strip. Same rhythm as lifecycle."}
+            {currentFrame === 5 && "Feature — orange accent strip. Three features, three colors."}
+            {currentFrame === 6 && "Close — room is warm now. Logo, CTA, One Platform in brand colors."}
+          </p>
         </div>
       </div>
 
-      {/* Full-size hidden frame for screenshot */}
-      <p className="text-white/40 text-sm">
-        For full-res export: right-click the frame below → Save Image, or screenshot at 1080x1920
-      </p>
-      <div
-        id="export-frame"
-        className={`${frames[currentFrame].bg} relative overflow-hidden`}
-        style={{ width: 1080, height: 1920 }}
-      >
-        <div style={{ transform: "scale(3)", transformOrigin: "top left", width: 360, height: 640 }}>
-          {frames[currentFrame].content}
+      {/* Full-size export frame */}
+      <div className="mt-8">
+        <p className="text-white/30 text-xs text-center mb-4">Full resolution (1080×1920) — scroll down to screenshot</p>
+        <div
+          id="export-frame"
+          className={`${frames[currentFrame].bg} relative overflow-hidden border border-white/5`}
+          style={{ width: 1080, height: 1920 }}
+        >
+          <div style={{ transform: "scale(3)", transformOrigin: "top left", width: 360, height: 640 }}>
+            {frames[currentFrame].content}
+          </div>
         </div>
       </div>
     </div>
