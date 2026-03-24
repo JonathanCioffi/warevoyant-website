@@ -24,7 +24,7 @@ const callouts = [
   },
   {
     id: "callout-commissioning",
-    title: "Commissioning & Validation",
+    title: "Commission & Validate",
     description: "Standards-based measurement and validation tools",
     color: "#009DD2",
     style: { bottom: "18.7%", left: "34%" },
