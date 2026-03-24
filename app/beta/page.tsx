@@ -109,7 +109,7 @@ export default function BetaPage() {
       if (!res.ok) {
         const data = await res.json().catch(() => null);
         throw new Error(
-          data?.error || `Submission failed (${res.status})`
+          data?.error?.message || data?.error || `Submission failed (${res.status})`
         );
       }
 
