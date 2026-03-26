@@ -5,6 +5,9 @@ export const metadata: Metadata = {
   title: "WareVoyant — AV Lifecycle Management Platform",
   description:
     "The lifecycle management platform built for AV professionals — from scoping through service, designed around how you actually work.",
+  icons: {
+    icon: "/favicon.svg",
+  },
 };
 
 export default function RootLayout({
